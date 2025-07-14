@@ -21,6 +21,60 @@ Ultralytics Library: To use YOLOv8 models
 
 OpenCV/Matplotlib: For result visualization
 
+
+┌────────────────────────────────────────────────────────┐
+│                    START WORKFLOW                      │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  1. Dataset Collection / Upload to Roboflow            │
+│     - Custom warehouse images                          │
+│     - OR use Roboflow Universe                         │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  2. Image Annotation in Roboflow                       │
+│     - Draw bounding boxes                              │
+│     - Assign labels (e.g., package, shelf, barcode)    │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  3. Dataset Generation                                 │
+│     - Choose YOLOv5 format                             │
+│     - Roboflow creates: train/, valid/, data.yaml      │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  4. Download Dataset in Google Colab                   │
+│     - Use Roboflow Python API snippet                  │
+│     - Dataset auto-downloads into Colab session        │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  5. Install Ultralytics (YOLOv8) in Colab              │
+│     - pip install ultralytics                          │
+│     - Load model: YOLO("yolov8n.pt")                   │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  6. Train the YOLOv8 Model                             │
+│     - model.train(data=".../data.yaml", epochs=25)     │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  7. Save Trained Weights                               │
+│     - Optionally copy best.pt to Google Drive          │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│  8. Run Predictions / Evaluate                         │
+│     - Upload a test image                              │
+│     - Use model.predict() and visualize detections     │
+└────────────────────────────────────────────────────────┘
+             ↓
+┌────────────────────────────────────────────────────────┐
+│                MODEL READY FOR DEPLOYMENT              │
+└────────────────────────────────────────────────────────┘
 Workflow: YOLOv8 Training Using Roboflow
 ✅ Step 1: Dataset Creation or Selection
 The dataset must contain images of packages, shelves, barcodes, or any relevant warehouse items.
